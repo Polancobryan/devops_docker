@@ -7,10 +7,10 @@ jobs:
     name: My job
     runs-on: ubuntu-latest
     steps:
-      - name: Deploy to isael8.surge.sh
+      - name: Deploy to isael.surge.sh
         uses: dswistowski/surge-sh-action@v1
         with:
           domain: 'isael.surge.sh'
-          project: '.'
+          project: './practica2'
           login: ${{ secrets.surge_login }}
           token: ${{ secrets.surge_token }}
