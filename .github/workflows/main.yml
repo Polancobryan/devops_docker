@@ -11,6 +11,6 @@ jobs:
         uses: dswistowski/surge-sh-action@v1
         with:
           domain: 'isael.surge.sh'
-          project: './Practica2/'
+          project: '../Practica2'
           login: ${{ secrets.surge_login }}
           token: ${{ secrets.surge_token }}
