@@ -1,25 +1,17 @@
 name: Deploy Surge Website
 
-on: [push]
+on: push
 
 jobs:
-       build:                           
-           runs-on: ubuntu-latest 
-           name: Deploying to surge 
-           steps:
-           
-           - uses: actions/checkout@v2 
-           - name: Install Node.js
-             uses: actions/setup-node@v2-beta
-             with: 
-               node-version: 12
-               domain: isael.surge.sh
-               project: '../'
-               login: secrets.SURGE_LOGIN
-               token: secrets.SURGE_TOKEN
-               
-           - name: Install Surge
-             run: npm install --global surge  
-
-           - name: Run surge
-             run: surge ./build isael.surge.sh --token ${{ secrets.SURGE_TOKEN }}
+  my-job:
+    name: My job
+    runs-on: ubuntu-latest
+    steps:
+    
+      - name: Deploy to isael.surge.sh
+        uses: dswistowski/surge-sh-action@v1
+        with:
+          domain: 'isael.surge.sh'
+          project: 'C:\Users\Isael\Desktop\Learning\practica-devops\practica2'
+          login: ${{ secrets.surge_login }}
+          token: ${{ secrets.surge_token }}
