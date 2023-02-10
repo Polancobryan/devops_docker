@@ -1,15 +1,16 @@
-name: My workflow
+name: Despliege del sitio web
 
-on: push
+on: [push]
 
 jobs:
-  my-job:
-    name: My job
+  build:
     runs-on: ubuntu-latest
+    name: Desplegando a surge
+
     steps:
-      - name: Deploy to isael.surge.sh
-        uses: dswistowski/surge-sh-action@v1
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
         with:
-          domain: 'isael.surge.sh'
-          login: ${{ secrets.surge_login }}
-          token: ${{ secrets.surge_token }}
+          node-version: 16
+      - run: npm install -g surge
+      - run: surge . ${{ secrets.surge_login }} --token ${{ secrets.surge_token }}
